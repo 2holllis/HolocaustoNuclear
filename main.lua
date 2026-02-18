@@ -3,7 +3,7 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
--- ✅ Esperar a que el jugador cargue
+--  Esperar a que el jugador cargue
 local player = Players.LocalPlayer or Players.PlayerAdded:Wait()
 local char = player.Character or player.CharacterAdded:Wait()
 
