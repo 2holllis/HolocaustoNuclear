@@ -1,10 +1,13 @@
+repeat task.wait() until game:IsLoaded()
+task.wait(1)
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
---  Esperar a que el jugador cargue
-local player = Players.LocalPlayer or Players.PlayerAdded:Wait()
+local player = Players.LocalPlayer
+repeat task.wait() until player ~= nil
 local char = player.Character or player.CharacterAdded:Wait()
 
 local config = {
@@ -34,11 +37,14 @@ local function applyHitbox(c)
     end
 end
 
+-- ✅ Usar gethui() para que Matcha permita crear GUI
+local coreGui = gethui and gethui() or game:GetService("CoreGui")
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "HolocaustoNuclear"
 screenGui.ResetOnSpawn = false
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-screenGui.Parent = player.PlayerGui
+screenGui.Parent = coreGui
 
 local main = Instance.new("Frame")
 main.Size = UDim2.new(0, 320, 0, 340)
