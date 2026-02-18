@@ -3,7 +3,8 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
-local player = Players.LocalPlayer
+-- ✅ Esperar a que el jugador cargue
+local player = Players.LocalPlayer or Players.PlayerAdded:Wait()
 local char = player.Character or player.CharacterAdded:Wait()
 
 local config = {
@@ -12,7 +13,7 @@ local config = {
     leftLeg  = 5,
     rightLeg = 5,
     transparency = true,
-    toggleKey = Enum.KeyCode.F1 -- ✅ F1
+    toggleKey = Enum.KeyCode.F1
 }
 
 local function applyHitbox(c)
@@ -298,7 +299,7 @@ footer.Size = UDim2.new(1, 0, 0, 20)
 footer.Position = UDim2.new(0, 0, 1, -22)
 footer.BackgroundColor3 = Color3.fromRGB(10, 5, 22)
 footer.BorderSizePixel = 0
-footer.Text = "F1 = Ocultar/Mostrar   •   v1.0 R6" -- ✅ F1
+footer.Text = "F1 = Ocultar/Mostrar   •   v1.0 R6"
 footer.TextColor3 = Color3.fromRGB(120, 60, 180)
 footer.TextSize = 9
 footer.Font = Enum.Font.Gotham
